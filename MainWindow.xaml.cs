@@ -2,16 +2,13 @@
 using System.IO;
 using System.Text.Json;
 using System.Windows;
-using System.Windows.Input;
 
 namespace ManualViewerApp
 {
     public partial class MainWindow : Window
     {
-        private readonly string _cfg = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory, 
-            "launcher.json"
-        );
+        private readonly string _cfgPath = Path.Combine(
+            AppDomain.CurrentDomain.BaseDirectory, "launcher.json");
 
         public MainWindow()
         {
@@ -21,31 +18,52 @@ namespace ManualViewerApp
 
         private void LoadPosition()
         {
-            if (File.Exists(_cfg))
+            if (File.Exists(_cfgPath))
             {
-                var c = JsonSerializer.Deserialize<Config>(File.ReadAllText(_cfg));
-                if (c is not null) { Left = c.X; Top = c.Y; }
+                try
+                {
+                    var cfg = JsonSerializer.Deserialize<Config>(
+                        File.ReadAllText(_cfgPath));
+                    if (cfg is not null)
+                    {
+                        Left = cfg.X;
+                        Top  = cfg.Y;
+                    }
+                }
+                catch { /* malformed JSON? ignore */ }
+            }
+            else
+            {
+                // default center
+                Left = (SystemParameters.PrimaryScreenWidth - Width) / 2;
+                Top  = (SystemParameters.PrimaryScreenHeight - Height) / 2;
             }
         }
 
-        private void SavePosition()
+        // Invoked by the ContextMenu → Settings...
+        private void SettingsMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var c = new Config { X = Left, Y = Top };
-            File.WriteAllText(_cfg, JsonSerializer.Serialize(c));
+            var dlg = new SettingsWindow(_cfgPath, Left, Top)
+            {
+                Owner = this
+            };
+            if (dlg.ShowDialog() == true)
+            {
+                // Re-load the new position
+                LoadPosition();
+            }
         }
 
-        private void Window_MouseLeftButtonDown(object s, MouseButtonEventArgs e)
-        {
-            DragMove();
-            SavePosition();
-        }
-
-        private void LauncherButton_Click(object s, RoutedEventArgs e)
+        private void LauncherButton_Click(object sender, RoutedEventArgs e)
         {
             var menu = new ManualsMenuWindow { Owner = this };
             menu.ShowDialog();
         }
 
-        private record Config { public double X { get; init; } public double Y { get; init; } }
+        private record Config
+        {
+            public double X { get; init; }
+            public double Y { get; init; }
+        }
     }
 }

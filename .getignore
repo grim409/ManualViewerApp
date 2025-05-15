@@ -1,0 +1,48 @@
+# Build Folders
+**/bin/
+**/obj/
+
+# Publish output
+publish/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio files
+.vs/
+*.VC.db
+*.VC.opendb
+
+# Rider files
+.idea/
+
+# VS Code files
+.vscode/
+
+# NuGet packages
+*.nupkg
+packages/
+
+# JetBrains Rider caches
+.idea/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# OS-generated files
+.DS_Store
+*.log
+
+# If you ever generate launch.json or secrets.json, you might exclude those:
+# Properties/launchSettings.json
+# secrets.json
