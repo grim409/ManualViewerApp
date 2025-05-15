@@ -1,0 +1,9 @@
+<Window x:Class="ManualViewerApp.PdfViewerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        Title="PDF Viewer" WindowState="Maximized">
+  <WindowsFormsHost>
+    <wf:Panel x:Name="PdfHost" />
+  </WindowsFormsHost>
+</Window>
