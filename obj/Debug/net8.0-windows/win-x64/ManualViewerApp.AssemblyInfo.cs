@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ManualViewerApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de916f1516f37d50c298d10f58a30c4a6509e09c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ManualViewerApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ManualViewerApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

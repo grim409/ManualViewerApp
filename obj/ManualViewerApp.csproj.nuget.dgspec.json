@@ -57,13 +57,17 @@
               "version": "[8.0.11, )",
               "autoReferenced": true
             },
-            "Microsoft.Windows.Compatibility": {
-              "target": "Package",
-              "version": "[9.0.5, )"
-            },
             "PdfiumViewer.Core": {
               "target": "Package",
               "version": "[1.0.4, )"
+            },
+            "PdfiumViewer.Native.x86.v8-xfa": {
+              "target": "Package",
+              "version": "[2018.4.8.256, )"
+            },
+            "PdfiumViewer.Native.x86_64.v8-xfa": {
+              "target": "Package",
+              "version": "[2018.4.8.256, )"
             }
           },
           "imports": [
@@ -95,7 +99,7 @@
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             },
-            "Microsoft.WindowsDesktop.App.WPF": {
+            "Microsoft.WindowsDesktop.App": {
               "privateAssets": "none"
             }
           },
